@@ -1,9 +1,32 @@
+/*
+    To see what directories were added manually, right click on SDL_Particle_Project cpp file or go to Project and open properties.
+    First is C/C++ -> General -> Additional Include Directories
+    Second is Linker -> Additional Library Directories
+    Third is Linker -> Input -> Additional Dependencies
+    
+    Also had to copy SDL2.dll (x64) to C:\Users\gerar\OneDrive\Desktop\vsRepos\SDL_Particle_Project\x64\Release
+    12:57 in udemy
+*/
+
 
 #include <iostream>
+#define SDL_MAIN_HANDLED // needed because SDL.h defines a main of its own and conflicts with main in this file
+#include <SDL.h>
+using namespace std;
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    // if is true something is wrong
+    if (SDL_Init(SDL_INIT_VIDEO) < 0) {
+        cout << "SDL init failed" << endl;
+        return 1;
+    }
+
+    cout << "SDL init succedded" << endl;
+
+    SDL_Quit();
+
+    return 0;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
