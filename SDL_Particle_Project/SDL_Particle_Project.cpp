@@ -57,7 +57,11 @@ int main() {
     Uint32 *buffer = new Uint32[SCREEN_HEIGHT * SCREEN_WIDTH];
 
     // function that takes in an amount of memory and changes it to some value; here it takes the pixel memory and sets it a certain value
-    memset(buffer, 0x88, SCREEN_WIDTH * SCREEN_HEIGHT * sizeof(Uint32));
+    memset(buffer, 0, SCREEN_WIDTH * SCREEN_HEIGHT * sizeof(Uint32));
+
+    for (int i = 0; i < SCREEN_HEIGHT * SCREEN_WIDTH; i++) {
+        buffer[i] = 0xFF00FFFF;
+    }
 
     // updates texture with the info from buffer (the pixel memory)
     SDL_UpdateTexture(texture, NULL, buffer, SCREEN_WIDTH * sizeof(Uint32));
