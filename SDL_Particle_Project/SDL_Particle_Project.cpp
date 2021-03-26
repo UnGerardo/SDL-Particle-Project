@@ -10,12 +10,16 @@
 
 #include <iostream>
 #include <math.h>
+#include <stdlib.h>
+#include <time.h>
 #define SDL_MAIN_HANDLED // needed because SDL.h defines a main of its own and conflicts with main in this file
 #include <SDL.h>
 #include "Screen.h"
 using namespace std;
 
 int main() {
+
+    srand(time(NULL));
 
     Screen screen;
 
