@@ -40,7 +40,7 @@ int main() {
         int elapsed = SDL_GetTicks();
 
 		screen.clear();
-		swarm.update();
+		swarm.update(elapsed);
 
         // multiply by 0.001 to smooth out change 
         int red = (1 + sin(elapsed * 0.0003)) * 128;
