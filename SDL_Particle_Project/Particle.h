@@ -1,8 +1,6 @@
 #pragma once
 struct Particle {
-	double m_x, m_y;
-	double m_xSpeed;
-	double m_ySpeed;
+	double m_x, m_y, m_Speed, m_Direction;
 
 	public:
 		Particle();
