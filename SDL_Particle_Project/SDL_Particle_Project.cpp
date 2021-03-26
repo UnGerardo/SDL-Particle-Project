@@ -38,6 +38,10 @@ int main() {
         // Update Particles
         // this func returns the number of ms since start of program
         int elapsed = SDL_GetTicks();
+
+		screen.clear();
+		swarm.update();
+
         // multiply by 0.001 to smooth out change 
         int red = (1 + sin(elapsed * 0.0003)) * 128;
         int green = (1 + sin(elapsed * 0.0006)) * 128;

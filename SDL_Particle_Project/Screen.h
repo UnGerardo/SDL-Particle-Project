@@ -12,6 +12,7 @@ class Screen {
 		bool init();
 		void setPixel(int x, int y, Uint8 r, Uint8 g, Uint8 b);
 		void update();
+		void clear();
 		bool processEvents();
 		void close();
 

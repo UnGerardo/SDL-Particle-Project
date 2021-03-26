@@ -8,6 +8,7 @@ class Swarm {
 		virtual ~Swarm();
 
 		const Particle* const getParticles() { return m_pParticles; };
+		void update();
 
 		const static int NPARTICLES = 5000;
 
