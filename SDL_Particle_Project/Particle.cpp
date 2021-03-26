@@ -15,6 +15,8 @@ Particle::~Particle() {
 }
 
 void Particle::update(int interval) {
+	// multiply by interval to accurately update particle position regardless of the speed of the computer
+	// if interval is really small it will decrease the impact of speed variable and vice versa
 	m_x += m_xSpeed * interval;
 	m_y += m_ySpeed * interval;
 }

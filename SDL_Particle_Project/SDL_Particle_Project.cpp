@@ -39,13 +39,12 @@ int main() {
         // this func returns the number of ms since start of program
         int elapsed = SDL_GetTicks();
 
-		screen.clear();
 		swarm.update(elapsed);
 
         // multiply by 0.001 to smooth out change 
-        int red = (1 + sin(elapsed * 0.0003)) * 128;
-        int green = (1 + sin(elapsed * 0.0006)) * 128;
-        int blue = (1 + sin(elapsed * 0.0009)) * 128;
+        unsigned char red = (1 + sin(elapsed * 0.0003)) * 128;
+        unsigned char green = (1 + sin(elapsed * 0.0006)) * 128;
+        unsigned char blue = (1 + sin(elapsed * 0.0009)) * 128;
 
 		const Particle *const pParticles = swarm.getParticles();
 		for(int i = 0; i < swarm.NPARTICLES; i++) {
@@ -56,6 +55,8 @@ int main() {
 
 			screen.setPixel(x, y, red, green, blue);
 		}
+
+		screen.boxBlur();
 
         // Draw screen
         screen.update();
