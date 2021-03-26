@@ -15,6 +15,7 @@
 #define SDL_MAIN_HANDLED // needed because SDL.h defines a main of its own and conflicts with main in this file
 #include <SDL.h>
 #include "Screen.h"
+#include "Swarm.h"
 using namespace std;
 
 int main() {
@@ -28,6 +29,10 @@ int main() {
         return 0;
     }
 
+	Swarm swarm;
+
+
+
     while (true) {
         
         // Update Particles
@@ -38,12 +43,13 @@ int main() {
         int green = (1 + sin(elapsed * 0.0006)) * 128;
         int blue = (1 + sin(elapsed * 0.0009)) * 128;
 
-        // Draw particles
-        for (int y = 0; y < screen.SCREEN_HEIGHT; y++) {
-            for (int x = 0; x < screen.SCREEN_WIDTH; x++) {
-                screen.setPixel(x, y, red, green, blue);
-            }
-        }
+		const Particle *const pParticles = swarm.getParticles();
+		for(int i = 0; i < swarm.NPARTICLES; i++) {
+			Particle particle = pParticles[i];
+			int x = (particle.m_x + 1) * screen.SCREEN_WIDTH/2;
+			int y = (particle.m_y + 1) * screen.SCREEN_HEIGHT/2;
+			screen.setPixel(x, y, red, green, blue);
+		}
 
         // Draw screen
         screen.update();
