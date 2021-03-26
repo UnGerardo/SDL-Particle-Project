@@ -1,8 +1,6 @@
 #include "Screen.h"
 
-Screen::Screen() : m_window(NULL), m_texture(NULL), m_renderer(NULL), m_buffer(NULL) {
-
-}
+Screen::Screen() : m_window(NULL), m_texture(NULL), m_renderer(NULL), m_buffer(NULL) { }
 
 bool Screen::init() {
     // if is true something is wrong

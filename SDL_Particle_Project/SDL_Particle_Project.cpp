@@ -9,6 +9,7 @@
 
 
 #include <iostream>
+#include <math.h>
 #define SDL_MAIN_HANDLED // needed because SDL.h defines a main of its own and conflicts with main in this file
 #include <SDL.h>
 #include "Screen.h"
@@ -24,15 +25,21 @@ int main() {
     }
 
     while (true) {
+        
         // Update Particles
+        // this func returns the number of ms since start of program
+        int elapsed = SDL_GetTicks();
+        // multiply by 0.001 to smooth out change 
+        int red = (1 + sin(elapsed * 0.0003)) * 128;
+        int green = (1 + sin(elapsed * 0.0006)) * 128;
+        int blue = (1 + sin(elapsed * 0.0009)) * 128;
+
         // Draw particles
         for (int y = 0; y < screen.SCREEN_HEIGHT; y++) {
             for (int x = 0; x < screen.SCREEN_WIDTH; x++) {
-                screen.setPixel(x, y, 128, 0, 255);
+                screen.setPixel(x, y, red, green, blue);
             }
         }
-
-        screen.setPixel(400, 300, 255, 255, 255);
 
         // Draw screen
         screen.update();
